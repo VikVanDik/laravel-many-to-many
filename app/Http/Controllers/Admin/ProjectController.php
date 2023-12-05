@@ -63,6 +63,7 @@ class ProjectController extends Controller
 
         $new_project->save();
 
+
         if(array_key_exists('technologies', $form_data)){
             $new_project->technology()->attach($form_data['technologies']);
         }
@@ -96,8 +97,9 @@ class ProjectController extends Controller
         $route = route('admin.projects.update', $project);
         $button = "Modifica";
         $types = Type::all();
+        $technologies = Technology::all();
 
-        return view('admin.projects.create', compact('title','method', 'route', 'project', 'button', 'types'));
+        return view('admin.projects.create', compact('title','method', 'route', 'project', 'button', 'types', 'technologies'));
     }
 
     /**
@@ -115,6 +117,10 @@ class ProjectController extends Controller
         $project->type_id = $form_data['type'];
 
         $project->fill($form_data);
+
+        if(array_key_exists('technologies', $form_data)){
+            $project->technology()->sync($form_data['technologies']);
+        }
 
         $project->update();
 

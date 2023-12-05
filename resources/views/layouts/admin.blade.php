@@ -18,7 +18,7 @@
 <div class="main-wrapper overflow-hidden d-flex">
 
     @include('admin.partials.sidebar')
-    <div class="container overflow-auto my-5">
+    <div class="V-container h-100 overflow-auto">
         @yield('content')
     </div>
 

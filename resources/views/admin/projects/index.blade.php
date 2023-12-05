@@ -5,11 +5,11 @@
 <h3 class="d-inline-block">Lista Progetti</h3>
 <div class="float-end">
     <h3 class="d-inline-block">Aggiungi</h3>
-    <a href="{{route('admin.projects.create')}}" class="btn btn-success"><i class="fa-solid fa-plus"></i></a>
+    <a href="{{route('admin.projects.create')}}" class="btn bg-black text-lime"><i class="fa-solid fa-plus"></i></a>
 </div>
 
 
-<table class="table my-5">
+<table class="custom-table my-5">
     <thead>
       <tr>
         <th scope="col">Nome</th>
@@ -26,8 +26,8 @@
                 <td>{{$project->name}}</td>
                 <td>{{$project->creation}}</td>
                 <td>
-                    <a href="{{route('admin.projects.show', $project)}}" class="btn btn-info"><i class="fa-solid fa-eye"></i></a>
-                    <a href="{{route('admin.projects.edit', $project)}}" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="{{route('admin.projects.show', $project)}}" class="btn bg-black text-lime"><i class="fa-solid fa-eye"></i></a>
+                    <a href="{{route('admin.projects.edit', $project)}}" class="btn bg-black text-lime"><i class="fa-solid fa-pen-to-square"></i></a>
                     <form
                         class="d-inline-block"
                         action="{{route('admin.projects.destroy', $project->id)}}"
@@ -36,12 +36,12 @@
                                         >
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                        <button type="submit" class="btn bg-black text-lime"><i class="fa-solid fa-trash"></i></button>
                     </form>
                 </td>
                 <td>{{$project->type?->name ?? '-'}}</td>
                 <td>@forelse ($project->technology as $technology)
-                    <span class="badge bg-info">{{$technology->name}}</span>
+                    <span class="badge underline bg-lime text-black"><a href="{{route ('admin.technology.projectlist', $technology)}}" class="text-decoration-none text-black">{{$technology->name}}</a></span>
                 @empty
                     -
                 @endforelse

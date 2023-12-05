@@ -3,7 +3,7 @@
 @section('content')
 
 <h3>Lista tecnologie</h3>
-<span class="text-warning">Clicca sul nome per modificarlo</span>
+<span class="text-lime">Clicca sul nome per modificarlo</span>
 
 @if (session('success'))
     <div class="alert alert-success" role="alert">
@@ -11,7 +11,7 @@
     </div>
 @endif
 
-<table class="table my-5">
+<table class="custom-table my-5">
     <thead>
       <tr>
         <th scope="col">Nome</th>
@@ -28,7 +28,7 @@
                     class="d-inline-block"
                     onsubmit="return confirm('Sei sicuro di voler modificare {{$technology->name}}?')"
                     id="form-edit-{{$technology->id}}">
-                    <input type="text" value="{{$technology->name}}" name="name" id="name" class="no-border">
+                    <input type="text" value="{{$technology->name}}" name="name" id="name" class="no-border bg-gray">
                     @csrf
                     @method('PUT')
                     </form>

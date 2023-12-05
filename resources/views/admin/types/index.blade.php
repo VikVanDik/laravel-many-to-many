@@ -3,14 +3,14 @@
 @section('content')
 
 <h3>Lista tipi</h3>
-<span class="text-warning">Clicca sul nome per modificarlo</span>
+<span class="text-lime">Clicca sul nome per modificarlo</span>
 @if (session('success'))
     <div class="alert alert-success" role="alert">
         {{ session('success') }}
     </div>
 @endif
 
-<table class="table">
+<table class="custom-table">
     <thead>
       <tr>
         <th scope="col">Nome</th>
@@ -27,7 +27,7 @@
                 class="d-inline-block"
                 onsubmit="return confirm('Sei sicuro di voler modificare {{$type->name}}?')"
                 id="form-edit-{{$type->id}}">
-                <input type="text" value="{{$type->name}}" name="name" id="name" class="no-border">
+                <input type="text" value="{{$type->name}}" name="name" id="name" class="no-border bg-gray">
                 @csrf
                 @method('PUT')
                 </form>
